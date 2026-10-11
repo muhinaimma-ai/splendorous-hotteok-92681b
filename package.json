@@ -1,0 +1,8 @@
+{
+  "name": "chatsite-netlify",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@pushforge/builder": "^2.0.5"
+  }
+}

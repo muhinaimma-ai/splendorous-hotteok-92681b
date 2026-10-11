@@ -1,0 +1,51 @@
+/* Support extends the uploaded site's semantic palette without changing other views. */
+#helpOv { --support-shadow: 0 16px 48px oklch(0 0 0 / 35%); padding: 12px 12px 86px; align-items: flex-end; justify-content: flex-end; }
+#helpOv .sheet { width: min(100%, 380px); height: auto; max-height: min(720px, calc(100dvh - 110px)); min-height: 230px; border-radius: 16px; box-shadow: var(--support-shadow); overflow: hidden; }
+#helpOv .sh { display: grid; grid-template-columns: 36px minmax(0, 1fr) auto; gap: 10px; flex-shrink: 0; }
+#helpOv .sh > div { min-width: 0; }
+#helpOv .sh b { overflow-wrap: anywhere; }
+#helpOv .sh .x { width: 36px; height: 36px; margin: 0; }
+#helpOv #helpChat { flex: 1; min-height: 0; }
+#helpOv #helpChat > .sb { flex: 1; max-height: 440px; min-height: 90px; overscroll-behavior: contain; }
+#helpOv .msg { overflow-wrap: anywhere; }
+#helpOv .msg.them { background: transparent; padding-left: 0; max-width: 100%; }
+#helpOv .sf { flex-shrink: 0; padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+#helpOv .sf input { min-width: 0; width: 100%; }
+#helpOv .chips { display: grid; width: 100%; grid-template-columns: minmax(0,1fr); gap: 8px; }
+#helpOv .chip { width: 100%; text-align: left; border-radius: 8px; white-space: normal; overflow-wrap: anywhere; line-height: 1.45; }
+#helpOv .support-channels { display: grid; gap: 8px; width: 100%; }
+#helpOv .support-channels .chip { text-decoration: none; display: block; }
+#helpOv.fullscreen { padding: 0; }
+#helpOv.fullscreen .sheet { width: 100%; max-width: none; height: 100dvh; max-height: 100dvh; border-radius: 0; }
+#helpOv.fullscreen #helpChat > .sb { max-height: none; }
+#helpOv.fullscreen .msgs, #helpOv.fullscreen .sf, #helpOv.fullscreen .sh, #helpOv.fullscreen .topics { width: 100%; max-width: 760px; margin-inline: auto; }
+#helpOv .topics { min-height: 36px; flex-shrink: 0; }
+#helpOv [hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { #helpOv .sheet { animation: none; } }
+/* Reference-matched support palette */
+:root { --support-panel: oklch(0.21 0.036 220); --support-service: oklch(0.29 0.061 175); --support-channel: oklch(0.28 0.052 242); --support-text: oklch(0.97 0 0); --support-line: oklch(0.47 0.043 200); --support-glow: oklch(0.85 0.23 157); --support-blue: oklch(0.65 0.2 250); --support-shadow: 0 16px 48px oklch(0 0 0 / 40%); }
+.support-picker { position: fixed; right: 12px; bottom: 120px; z-index: 9999; box-sizing: border-box; width: min(calc(100vw - 24px), 224px); max-height: calc(100dvh - 138px); overflow-y: auto; display: grid; gap: 6px; padding: 32px 10px 10px; border-radius: 18px; border: 2px solid var(--support-line); background: var(--support-panel); box-shadow: var(--support-shadow); animation: spIn .2s ease-out; }
+.support-picker[hidden] { display: none; }
+.support-card { box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 84px; padding: 6px 4px; border-radius: 12px; border: 1px solid var(--support-line); background: var(--support-channel); color: var(--support-text); text-decoration: none; font: inherit; cursor: pointer; text-align: center; }
+.support-card-support { background: var(--support-service); }
+.support-card:focus-visible, .support-card:hover { outline: 2px solid var(--support-glow); outline-offset: 2px; }
+.support-icon { box-sizing: border-box; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--support-text); background: var(--support-blue); margin-bottom: 1px; }
+.support-card-support .support-icon { background: var(--support-glow); }
+.support-icon svg { width: 24px; height: 24px; }
+.support-card span:not(.support-icon), .support-card b { font-weight: 800; font-size: 12px; line-height: 1.3; }
+.support-picker-x { position: absolute; top: 8px; right: 14px; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--support-line); color: var(--support-text); font-size: 22px; cursor: pointer; }
+.fab { width: 94px; height: 94px; padding: 0; border-radius: 50%; right: 16px; bottom: 22px; border: 5px solid var(--support-text); background: var(--support-glow); color: var(--support-text); justify-content: center; font-size: 0; box-shadow: 0 0 30px var(--support-glow); }
+.fab svg { width: 48px; height: 48px; }
+.fab::after { content: 'Msaada wa Haraka'; position: absolute; bottom: -19px; right: 0; white-space: nowrap; font-size: 13px; padding: 3px 9px; border-radius: 6px; color: var(--support-text); background: var(--support-panel); }
+@media (max-height: 700px) { .support-picker { bottom: 106px; } }
+@media (prefers-reduced-motion: reduce) { .support-picker { animation: none; } }
+@keyframes spIn { from { opacity: 0; transform: translateY(12px); } }
+/* Popup ndogo sana za msaada */
+#helpOv { padding: 8px 8px 76px; }
+#helpOv .sheet { width: min(100%, 260px); max-height: min(380px, calc(100dvh - 100px)); min-height: 160px; border-radius: 12px; font-size: 12px; }
+#helpOv .sh { grid-template-columns: 26px minmax(0,1fr) auto; gap: 6px; padding: 8px 10px; }
+#helpOv .sh .x { width: 26px; height: 26px; }
+#helpOv #helpChat > .sb { max-height: 230px; min-height: 60px; padding: 8px; }
+#helpOv .msg, #helpOv .chip { font-size: 12px; padding: 6px 8px; line-height: 1.35; }
+#helpOv .sf { padding: 6px 8px; }
+#helpOv .sf input, #helpOv .sf button { font-size: 12px; height: 32px; }

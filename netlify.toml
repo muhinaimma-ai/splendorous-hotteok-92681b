@@ -1,0 +1,9 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/public/push"
+  to = "/.netlify/functions/push"
+  status = 200
+  force = true

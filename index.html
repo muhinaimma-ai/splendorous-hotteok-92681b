@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ChatSite Online — Fundisha Kiswahili, Pata kipato</title>
+<meta name="description" content="Chat na wageni, fundisha Kiswahili na upate kipato.">
+<meta property="og:title" content="ChatSite Online — Fundisha Kiswahili, Pata kipato">
+<meta property="og:description" content="Chat na wageni, fundisha Kiswahili na upate kipato.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#06140d">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06140d;--bg2:#0a1f15;--card:#0e2419;--card2:#123020;--line:#1a3a28;--txt:#eef7f1;--mut:#8fa99a;--g:#22e08a;--g2:#16b56c;--y:#f5c518;--r:#ef4444}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--txt);font-family:Manrope,system-ui,sans-serif}
+body{background:radial-gradient(120% 60% at 50% 0%,#0d2a1b 0%,var(--bg) 60%);min-height:100vh}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+.wrap{max-width:480px;margin:0 auto;padding:0 14px 110px}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(6,20,13,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);max-width:480px;margin:0 auto}
+.logo{width:38px;height:38px;border-radius:50%;background:var(--g);display:grid;place-items:center;box-shadow:0 0 18px rgba(34,224,138,.45)}
+.brand b{font-weight:800;font-size:15px;letter-spacing:.3px}.brand b span{color:var(--g)}
+.brand small{display:block;color:var(--mut);font-size:11px}
+.btn-y{margin-left:auto;background:var(--y);color:#1a1400;font-weight:800;font-size:13px;padding:9px 16px;border-radius:999px}
+.date{display:flex;justify-content:center;align-items:center;gap:6px;color:var(--mut);font-size:12px;margin:14px 0}
+.date svg{color:var(--g)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 12px;text-align:left}
+.stat .ic{width:30px;height:30px;border-radius:10px;background:var(--card2);display:grid;place-items:center;color:var(--g);margin-bottom:10px}
+.stat .ic.y{color:var(--y)}
+.stat small{display:block;font-size:10px;color:var(--mut);letter-spacing:.5px;text-transform:uppercase}
+.stat b{font-size:13px;font-weight:800;color:var(--g)}
+.stat.t b{color:var(--txt)}
+.pill{display:table;margin:12px auto 6px;font-size:10px;color:var(--g);background:rgba(34,224,138,.08);border:1px solid rgba(34,224,138,.25);padding:5px 12px;border-radius:999px}
+.pill i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--g);margin-right:6px;box-shadow:0 0 8px var(--g)}
+h1{text-align:center;font-size:21px;font-weight:800;letter-spacing:-.5px}h1 span{color:var(--g)}
+.sub{text-align:center;color:var(--mut);font-size:12px;margin:4px 0 10px}.sub b{color:var(--y)}
+.cta{display:block;width:100%;background:var(--g);color:#032013;font-weight:800;font-size:13px;letter-spacing:.4px;padding:11px;border-radius:14px;box-shadow:0 8px 30px rgba(34,224,138,.3)}
+.cta:active{transform:scale(.98)}
+.hero{margin:10px auto 20px;max-width:340px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.hero img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
+h2{font-size:19px;font-weight:800;display:flex;align-items:center;gap:6px}
+.online{color:var(--txt);margin:12px 0 16px;display:flex;align-items:center;gap:12px;min-height:56px;padding:10px 14px;border:1px solid color-mix(in srgb,var(--g) 35%,transparent);border-radius:18px;background:linear-gradient(135deg,color-mix(in srgb,var(--g) 14%,transparent),var(--card2));box-shadow:0 8px 24px color-mix(in srgb,var(--g) 15%,transparent);backdrop-filter:blur(8px)}
+.online-signal{position:relative;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:color-mix(in srgb,var(--g) 18%,transparent);flex:none}
+.online-signal::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--g);animation:online-ring 2s ease-out infinite}
+.online i{width:10px;height:10px;border-radius:50%;background:var(--g);box-shadow:0 0 10px var(--g)}
+.online-label{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--g)}
+.online-count{margin-left:auto;display:flex;align-items:center;gap:8px;color:var(--g);padding:6px 12px;border-radius:999px;background:color-mix(in srgb,var(--g) 12%,transparent)}
+.online-count svg{width:18px;height:18px;flex:none}
+.online #onl{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;min-width:3ch;text-align:right;line-height:1;color:var(--txt)}
+.person.off{opacity:1}.person.off .chat{color:var(--mut);background:var(--bg2)}
+@keyframes online-pulse{50%{opacity:.45}}
+@keyframes online-ring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.person{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px;margin-bottom:10px;width:100%;text-align:left}
+.av{position:relative;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:17px;flex:none}
+.profile-photo{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%}.example-note{color:var(--mut);font-size:11px;margin:6px 0}
+.av::after{content:"";position:absolute;right:0;bottom:0;width:11px;height:11px;border-radius:50%;background:var(--g);border:2px solid var(--card)}
+.av.off::after{background:#5b6b62}
+.person b{font-size:14px}.person small{display:block;color:var(--mut);font-size:11px;margin-top:2px}
+.person .chat{margin-left:auto;min-width:64px;flex:none;padding:8px 6px;border-radius:8px;background:var(--card2);display:grid;place-items:center;color:var(--g);font-size:11px}
+.person.off{opacity:.65}
+.av.training::after{background:var(--y)}
+.person.training .chat{color:var(--y)}
+.person-info{min-width:0;flex:1}.person-info b,.person-info small{overflow-wrap:anywhere}
+.person .chat{width:78px;text-align:center;line-height:1.35;overflow-wrap:anywhere}
+.box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px;margin-bottom:26px}
+.lbl{font-size:10px;letter-spacing:2px;color:var(--y);font-weight:700}
+.live{float:right;font-size:12px;display:flex;align-items:center;gap:5px}.live i{width:8px;height:8px;border-radius:50%;background:var(--g);animation:p 1.4s infinite}
+@keyframes p{50%{opacity:.3}}
+.payouts{height:250px;overflow:hidden;margin-top:12px;overscroll-behavior:contain}
+.ptrack{animation:scroll 40s linear infinite}
+.payouts:hover .ptrack,.payouts:focus-within .ptrack{animation-play-state:paused}
+@keyframes scroll{to{transform:translateY(-50%)}}
+.pay{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border-radius:14px;padding:10px 12px;margin-bottom:8px}
+.pay b{font-size:13px}.pay small{display:block;color:var(--mut);font-size:10px}
+.pay .m{font-size:9px;border:1px solid var(--line);padding:3px 7px;border-radius:999px;color:var(--y);margin-left:auto;margin-right:10px}
+.pay .a{color:var(--g);font-weight:800;font-size:13px}
+.revs{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin:12px 0 14px;scrollbar-width:none}
+.rev{flex:0 0 78%;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}
+.rev b{font-size:13px}.rev .s{float:right;color:var(--y);font-size:12px}.rev p{color:var(--mut);font-size:12px;margin-top:8px;line-height:1.5}
+.field{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:10px;outline:none}
+.field:focus{border-color:var(--g)}
+.btn-g{display:inline-flex;align-items:center;gap:6px;background:var(--g);color:#032013;font-weight:800;padding:11px 18px;border-radius:999px;margin-top:12px}
+footer{text-align:center;color:var(--mut);font-size:11px;padding:10px 0 20px}
+.fab{position:fixed;right:16px;bottom:20px;z-index:30;display:flex;align-items:center;gap:6px;background:var(--g);color:#032013;font-weight:800;padding:13px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(34,224,138,.4)}
+.ov{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.45);backdrop-filter:blur(8px);display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex}
+.sheet{width:100%;max-width:480px;height:88vh;background:var(--bg2);border:1px solid var(--line);border-radius:24px 24px 0 0;display:flex;flex-direction:column;animation:up .25s ease}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sh{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.sh b{font-size:14px}.sh small{display:block;font-size:11px;color:var(--g)}
+.sh .x{margin-left:auto;font-size:22px;color:var(--mut)}
+.sb{flex:1;overflow-y:auto;padding:16px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px}
+.opt.sel{border-color:var(--g);box-shadow:0 0 0 1px var(--g) inset}
+.opt b{font-size:14px}.opt small{display:block;color:var(--mut);font-size:11px}
+.opt .e{margin-left:auto;color:var(--g);font-weight:800;font-size:14px}
+.tix{background:rgba(245,197,24,.08);border:1px solid rgba(245,197,24,.3);border-radius:16px;padding:14px;margin:6px 0 16px}
+.tix b{color:var(--y);font-size:13px}.tix small{display:block;color:var(--mut);font-size:12px;margin-top:4px}
+.bar{display:flex;justify-content:space-between;font-size:11px;color:var(--mut);padding:8px 16px;border-bottom:1px solid var(--line)}
+.bar b{color:var(--y)}
+.msgs{display:flex;flex-direction:column;gap:10px}
+.msg{max-width:80%;padding:11px 14px;border-radius:18px;font-size:14px;line-height:1.5;white-space:pre-line}
+.msg.them{background:var(--card2);align-self:flex-start;border-bottom-left-radius:6px}
+.msg.me{background:var(--g);color:#032013;align-self:flex-end;border-bottom-right-radius:6px;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:transparent;border:1px solid var(--g);color:var(--g);padding:8px 12px;border-radius:999px;font-size:13px;font-weight:600}
+.sf{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.sf input{flex:1;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:12px 16px;outline:none}
+.send{width:46px;height:46px;border-radius:50%;background:var(--g);color:#032013;display:grid;place-items:center;flex:none}
+.topics{font-size:11px;color:var(--g);padding:8px 14px 0;display:flex;align-items:center;gap:5px}
+.toast{position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:60;background:var(--card2);border:1px solid var(--g);padding:10px 16px;border-radius:14px;font-size:13px;display:none}
+.withdraw-notice{margin-top:12px;padding:22px 18px;text-align:center;border:1px solid var(--line);border-radius:22px;background:var(--card)}
+.withdraw-notice[hidden]{display:none}.withdraw-alert{display:grid;place-items:center;margin:0 auto 14px;width:52px;height:52px;border-radius:50%;background:var(--card2);color:var(--r)}
+.withdraw-notice h2{display:block;font-size:18px;line-height:1.4}.withdraw-notice p{color:var(--mut);font-size:13px;line-height:1.7;margin:10px 0 18px}
+.withdraw-register{width:100%;padding:14px;border-radius:999px;background:var(--y);color:var(--bg);font-weight:800}.withdraw-back{display:block;margin:10px auto 0;padding:5px;color:var(--mut);font-weight:700}
+.sf input{min-width:0}
+.payment-notice{position:fixed;top:12px;left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:452px;z-index:70;padding:14px 16px;background:var(--card2);border:1px solid var(--g);border-radius:14px;color:var(--txt);font-size:13px;line-height:1.6}
+.payment-notice[hidden]{display:none}
+.lesson-notice{padding:20px 16px;border-top:1px solid var(--line);text-align:center;background:var(--card)}
+.lesson-notice[hidden]{display:none}.lesson-notice h2{display:block;font-size:17px}.lesson-notice p{color:var(--mut);font-size:13px;line-height:1.7;margin:10px 0}.lesson-notice .withdraw-back{color:var(--g);padding:12px;min-height:44px}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+.person-info{min-width:0;flex:1}.person b{overflow-wrap:anywhere}.person .chat{min-width:60px}.cs-top small{white-space:normal!important;overflow:visible!important;max-width:100%!important}.cs-top>div{min-width:0;flex:1}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="#032013"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-7 9.2V16l7 4 7-4v-3.8L12 16l-7-3.8z"/></svg></div>
+  <div class="brand"><b>CHATSITE <span>ONLINE</span></b><small>Fundisha Kiswahili • Pata kipato</small></div>
+  <button class="btn-y" onclick="signup()">Jisajili</button>
+</header>
+<div class="wrap">
+  <div class="date"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span id="date"></span></div>
+  <div class="stats">
+    <button class="stat t" onclick="openWithdraw()"><div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg></div><b>Toa pesa</b><small style="text-transform:none">Muda wowote</small></button>
+    <div class="stat"><div class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H5a2 2 0 0 1 0-4h13v4M3 5v14a2 2 0 0 0 2 2h15V7"/></svg></div><small>Salio</small><b id="bal">TZS 0</b></div>
+    <div class="stat"><div class="ic y"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 17 6-6 4 4 8-8M14 7h7v7"/></svg></div><small>Faida</small><b id="prof">TZS 0</b></div>
+  </div>
+  <section id="withdrawNotice" class="withdraw-notice" hidden aria-label="Toa pesa">
+    <div class="withdraw-alert"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 10 18H2L12 3Z"/><path d="M12 9v5m0 3v1"/></svg></div>
+    <h2>Namba yako haijasajiliwa kikamilifu</h2>
+    <p>Ili kutoa pesa, namba yako ya kupokea malipo lazima itambuliwe na mfumo. Kufungua menyu ya malipo ni TZS 14,500 mara moja.</p>
+    <button class="withdraw-register" onclick="signup()">JISAJILI SASA</button>
+    <button class="withdraw-back" onclick="closeWithdraw()">← Rudi nyuma</button>
+  </section>
+  <div class="pill"><i></i>Jukwaa la kufunza Kiswahili</div>
+  <h1>Welcome to <span>ChatSite</span></h1>
+  <p class="sub">Teach Swahili. <b>Earn income.</b></p>
+  <button class="cta" onclick="signup()">FUNGUA ACCOUNT HAPA</button>
+<div class="hero"><img src="./cover.jpg" alt="Mwalimu na watu wakijifunza Kiswahili darasani" width="1536" height="1024"></div>
+
+  <h2>💬 Live Foreigners Online</h2><p class="example-note">Wasifu wa mfano • picha za kuwakilisha</p>
+  <div class="online" role="status" aria-live="polite"><span class="online-signal" aria-hidden="true"><i></i></span><span class="online-label">Online now</span><span class="online-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="7" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 4a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 4v2"/></svg><span id="onl">0</span></span></div>
+  <div id="people"></div>
+
+  <div class="box">
+    <h2 style="margin-top:4px">Malipo ya hivi karibuni</h2>
+    <div class="payouts"><div class="ptrack" id="pays"></div></div>
+  </div>
+
+  <h2>⭐ Maoni ya watu</h2>
+  <p style="color:var(--mut);font-size:13px;margin-top:4px">Maoni yako binafsi.</p>
+  <div class="revs" id="revs"></div>
+  <div class="box">
+    <b style="font-size:14px">Toa maoni yako</b>
+    <input class="field" id="rn" placeholder="Jina lako">
+    <textarea class="field" id="rt" rows="3" placeholder="Andika maoni yako hapa..."></textarea>
+    <button class="btn-g" onclick="addRev()">➤ Tuma maoni</button>
+  </div>
+  <footer>© 2026 ChatSite Online • Fundisha Kiswahili, pata kipato</footer>
+</div>
+
+<button class="fab" aria-label="Msaada" aria-expanded="false" aria-controls="supportPicker" onclick="openHelp()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><rect x="2" y="14" width="5" height="7" rx="2"/><rect x="17" y="14" width="5" height="7" rx="2"/></svg>Msaada</button>
+
+<!-- Chat na mgeni -->
+<div class="ov" id="chatOv"><div class="sheet">
+  <div class="sh"><div class="av" id="cAv"></div><div><b id="cName"></b><small>● Online</small></div><button class="x" onclick="closeOv('chatOv')">×</button></div>
+  <div id="pick" class="sb">
+    <h2>Chagua muda wa chat</h2>
+    <p style="color:var(--mut);font-size:12px;margin:4px 0 16px" id="pickSub"></p>
+    <div id="opts"></div>
+    <div class="tix"><b>🎟 Tiketi za bure</b><small id="tixTxt"></small></div>
+    <button class="cta" id="startBtn"></button>
+  </div>
+  <div id="room" style="display:none;flex:1;flex-direction:column;min-height:0">
+    <div class="bar"><span id="rInfo"></span><b id="rEarn">Umechuma TZS 0</b></div>
+    <div class="sb"><div class="msgs" id="rMsgs"></div></div>
+    <form class="sf" id="roomForm" onsubmit="sendRoom(event)"><input id="rIn" placeholder="Andika ujumbe..." autocomplete="off"><button class="send">➤</button></form>
+    <button class="cta" id="confirmPayment" style="display:none;margin:12px;width:auto" onclick="confirmRoomPayment()">Thibitisha malipo yako</button>
+    <section id="lessonNotice" class="lesson-notice" hidden role="alert" aria-labelledby="lessonNoticeTitle">
+      <h2 id="lessonNoticeTitle">Malipo hayajaidhinishwa</h2>
+      <p id="lessonNoticeMessage"></p>
+      <button type="button" class="withdraw-back" onclick="backFromLessonReview()">← Rudi nyuma</button>
+    </section>
+  </div>
+</div></div>
+
+<!-- Msaada -->
+<div class="ov" id="helpOv" role="dialog" aria-modal="true" aria-label="Msaada wa Chatsite"><div class="sheet">
+  <div class="sh"><div class="logo" style="width:36px;height:36px">🎧</div><div><b>Msaada wa Chatsite</b><small>● Tupo online sasa</small></div><button class="x" onclick="closeOv('helpOv')">×</button></div>
+  <div class="sb" id="helpChoice" style="display:flex;flex-direction:column;gap:10px">
+    <p style="color:var(--mut);font-size:13px;margin:0">Karibu sana, mpendwa! 👋 Chagua njia ya msaada:</p>
+    <a class="cta" href="https://chat.whatsapp.com/BSXsthyQKxkEeGsRo6gGyB?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener" style="text-align:center;text-decoration:none;display:block">👥 Jiunge na Group la WhatsApp</a>
+    <button type="button" class="cta" onclick="startHelpChat()">🎧 Msaada wa haraka</button>
+  </div>
+  <div id="helpChat" style="display:none;flex:1;flex-direction:column;min-height:0">
+    <div class="sb"><div class="msgs" id="hMsgs"></div></div>
+    <button class="topics" onclick="showTopics()">▢ Onyesha mada za msaada</button>
+    <form class="sf" onsubmit="sendHelp(event)"><input id="hIn" placeholder="Andika swali lako..." autocomplete="off"><button class="send">➤</button></form>
+  </div>
+</div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="payment-notice" id="paymentNotice" role="status" aria-live="polite" hidden></div>
+
+<script src="./payment-examples.js"></script>
+<script src="./support-language.js"></script>
+<script src="./lesson-review.js"></script>
+<script src="./student-dialogue.js"></script>
+<script src="./top-notify.js" defer></script>
+<script src="./payment-notify.js" defer></script>
+<script src="./push-client.js"></script>
+<script src="./support-push.js" defer></script>
+<script src="./admin-support.js" defer></script>
+<script src="./support-experience.js" defer></script>
+<script src="./presence.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const fmt=n=>'TZS '+n.toLocaleString('en-US');
+const store={get:(k,d)=>{try{return JSON.parse(localStorage.getItem('cs_'+k))??d}catch{return d}},set:(k,v)=>localStorage.setItem('cs_'+k,JSON.stringify(v))};
+function toast(t){const e=$('toast');e.textContent=t;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',2600)}
+function signup(){window.open('https://adsblog.app/page/reg.php?reg=MHINA99','_blank','noopener,noreferrer')}
+function openWithdraw(){$('withdrawNotice').hidden=false;$('withdrawNotice').scrollIntoView({behavior:'smooth',block:'center'})}
+function closeWithdraw(){$('withdrawNotice').hidden=true;}
+
+// tarehe
+const days=['Jumapili','Jumatatu','Jumanne','Jumatano','Alhamisi','Ijumaa','Jumamosi'];
+function tick(){const d=new Date();$('date').textContent=`Leo • ${days[d.getDay()]}, ${d.getDate()} ${d.toLocaleString('en-US',{month:'long'})} ${d.getFullYear()} • ${d.toTimeString().slice(0,8)}`}
+tick();setInterval(tick,1000);
+
+// salio
+let bal=store.get('bal',0);
+function showBal(){$('bal').textContent=fmt(bal);$('prof').textContent=fmt(bal)}showBal();
+
+// watu
+const colors=['#1aa9e0','#e8892b','#9a9a2a','#8b5cf6','#e04f7a','#22c55e','#f59e0b','#06b6d4'];
+const P=[["Maria Garcia","🇲🇽","Mexiko","media/maria.jpg",1],["Ahmed Hassan","🇪🇬","Misri","media/ahmed.jpg",1],["Ingrid Berg","🇳🇴","Norwei","media/ingrid.jpg",0],["Tom Baker","🇦🇺","Australia","media/tom.jpg",1],["Oliver Smith","🇬🇧","Uingereza","media/oliver.jpg",1],["Sarah Brown","🇺🇸","Marekani","media/sarah.jpg",1],["Yuki Tanaka","🇯🇵","Japani","",0],["Lucas Müller","🇩🇪","Ujerumani","media/lucas.jpg",1],["Chloé Martin","🇫🇷","Ufaransa","media/chloe.jpg",1],["Raj Patel","🇮🇳","India","",1],["Ana Silva","🇧🇷","Brazili","",0],["Liam Chen","🇨🇦","Kanada","",1],["Sofia Rossi","🇮🇹","Italia","",1],["Emma Jansen","🇳🇱","Uholanzi","media/emma.jpg",1],["Kwame Mensah","🇬🇭","Ghana","media/kwame.jpg",0],["Hana Kim","🇰🇷","Korea","",1],["Camila Thomas","🇮🇳","India","media/women-0.jpg",1],["Mason Davis","🇧🇪","Ubelgiji","media/men-0.jpg",1],["Grace Campbell","🇬🇧","Uingereza","media/women-1.jpg",1],["Victor Lewis","🇬🇧","Uingereza","media/men-1.jpg",1],["Ava Phillips","🇧🇷","Brazili","media/women-2.jpg",1],["Daniel Young","🇨🇦","Kanada","media/men-2.jpg",0],["Amara Phillips","🇬🇧","Uingereza","media/women-3.jpg",1],["Ivan Taylor","🇪🇸","Hispania","media/men-3.jpg",1],["Giulia Miller","🇮🇳","India","media/women-4.jpg",1],["Mason Walker","🇬🇧","Uingereza","media/men-4.jpg",1],["Amara Anderson","🇸🇪","Uswidi","media/women-5.jpg",1],["Max Thomas","🇧🇪","Ubelgiji","media/men-5.jpg",0],["Lily Romano","🇸🇪","Uswidi","media/women-6.jpg",1],["Tariq Kumar","🇫🇷","Ufaransa","media/men-6.jpg",1],["Grace Costa","🇮🇹","Italia","media/women-7.jpg",1],["Erik Moore","🇧🇪","Ubelgiji","",1],["Charlotte Romano","🇬🇧","Uingereza","media/women-8.jpg",1],["Ryan Lewis","🇮🇪","Ayalandi","media/men-8.jpg",0],["Nadia Phillips","🇳🇴","Norwei","media/women-9.jpg",1],["Samuel Costa","🇲🇽","Mexiko","media/men-9.jpg",1],["Fatima Green","🇪🇸","Hispania","media/women-10.jpg",1],["Mateo Ali","🇪🇸","Hispania","media/men-10.jpg",1],["Ava Romano","🇸🇪","Uswidi","media/women-11.jpg",1],["Andre Larsen","🇳🇴","Norwei","media/men-11.jpg",0],["Anika Scott","🇨🇦","Kanada","",1],["Leo Schmidt","🇧🇷","Brazili","media/men-12.jpg",1],["Clara Okafor","🇳🇴","Norwei","media/women-13.jpg",1],["Felix Larsen","🇧🇷","Brazili","media/men-13.jpg",1],["Isabella Singh","🇨🇦","Kanada","media/women-14.jpg",1],["Tariq Romano","🇳🇴","Norwei","media/men-14.jpg",0],["Valentina Ali","🇯🇵","Japani","media/women-15.jpg",1],["Thomas Larsen","🇲🇽","Mexiko","media/men-15.jpg",1],["Charlotte Wilson","🇳🇱","Uholanzi","media/women-16.jpg",1],["David Ali","🇨🇦","Kanada","media/men-16.jpg",1],["Mia Petrov","🇸🇪","Uswidi","media/women-17.jpg",1],["Ivan Kumar","🇲🇽","Mexiko","",0],["Freya Haddad","🇮🇳","India","media/women-18.jpg",1],["Rohan Williams","🇲🇽","Mexiko","",1],["Aisha White","🇦🇺","Australia","media/women-19.jpg",1],["Paul Miller","🇮🇹","Italia","media/men-19.jpg",1],["Freya Anderson","🇪🇸","Hispania","media/women-20.jpg",1],["Jonas Roberts","🇮🇪","Ayalandi","media/men-20.jpg",0],["Ava White","🇲🇽","Mexiko","",1],["Jonas Moreau","🇳🇱","Uholanzi","media/men-21.jpg",1],["Zoe Phillips","🇧🇪","Ubelgiji","media/women-22.jpg",1],["Karim Haddad","🇧🇷","Brazili","media/men-22.jpg",1],["Aisha Kumar","🇮🇳","India","media/women-23.jpg",1],["Marco Thomas","🇨🇦","Kanada","media/men-23.jpg",0],["Elena Thomas","🇪🇸","Hispania","media/women-24.jpg",1],["Marco Johnson","🇮🇪","Ayalandi","media/men-24.jpg",1],["Giulia Harris","🇳🇱","Uholanzi","media/women-25.jpg",1],["Ali Johnson","🇩🇪","Ujerumani","media/men-25.jpg",1],["Aiko Dubois","🇯🇵","Japani","media/women-26.jpg",1],["Ryan Romano","🇳🇴","Norwei","media/men-26.jpg",0],["Zoe Ali","🇨🇭","Uswisi","media/women-27.jpg",1],["Ryan Sato","🇬🇧","Uingereza","media/men-27.jpg",1],["Ingrid Boateng","🇧🇪","Ubelgiji","media/women-28.jpg",1],["Jack Novak","🇮🇳","India","media/men-28.jpg",1],["Mia Clark","🇨🇦","Kanada","media/women-29.jpg",1],["Pablo Evans","🇫🇷","Ufaransa","media/men-29.jpg",0],["Lily Nelson","🇬🇧","Uingereza","media/women-30.jpg",1],["Jack Johnson","🇩🇪","Ujerumani","media/men-30.jpg",1],["Nadia Moore","🇯🇵","Japani","media/women-31.jpg",1],["Ryan Williams","🇨🇦","Kanada","media/men-31.jpg",1],["Julia Fernandez","🇮🇳","India","media/women-32.jpg",1],["Felix Nakamura","🇳🇱","Uholanzi","",0],["Aisha Lopez","🇯🇵","Japani","media/women-33.jpg",1],["David Taylor","🇦🇺","Australia","media/men-33.jpg",1],["Marta Turner","🇮🇪","Ayalandi","media/women-34.jpg",1],["David Green","🇨🇦","Kanada","media/men-34.jpg",1],["Nora Moore","🇳🇴","Norwei","media/women-35.jpg",1],["Omar Novak","🇫🇷","Ufaransa","media/men-35.jpg",0],["Rosa Williams","🇮🇹","Italia","media/women-36.jpg",1],["Andre Campbell","🇩🇪","Ujerumani","media/men-36.jpg",1],["Nadia Williams","🇨🇭","Uswisi","media/women-37.jpg",1],["Kenji Sato","🇨🇦","Kanada","media/men-37.jpg",1],["Alice Fischer","🇯🇵","Japani","media/women-38.jpg",1],["Hugo Hill","🇪🇸","Hispania","media/men-38.jpg",0],["Nadia Dubois","🇨🇭","Uswisi","media/women-39.jpg",1],["Arjun Nakamura","🇪🇸","Hispania","media/men-39.jpg",1],["Ruby Okafor","🇮🇹","Italia","media/women-40.jpg",1],["Luca Roberts","🇪🇸","Hispania","media/men-40.jpg",1],["Laura Fischer","🇮🇪","Ayalandi","media/women-41.jpg",1],["Rohan Petrov","🇺🇸","Marekani","media/men-41.jpg",0],["Olivia Wright","🇮🇪","Ayalandi","media/women-42.jpg",1],["Omar Clark","🇯🇵","Japani","media/men-42.jpg",1],["Anika Petrov","🇯🇵","Japani","media/women-43.jpg",1],["Erik Wilson","🇪🇸","Hispania","media/men-43.jpg",1],["Grace Walker","🇮🇪","Ayalandi","",1],["Diego Nelson","🇮🇹","Italia","media/men-44.jpg",0],["Astrid Fernandez","🇺🇸","Marekani","media/women-45.jpg",1],["David Sato","🇯🇵","Japani","media/men-45.jpg",1],["Ava Singh","🇦🇺","Australia","media/women-46.jpg",1],["Lars Haddad","🇮🇹","Italia","",1],["Astrid Harris","🇧🇷","Brazili","",1],["Arjun Wilson","🇮🇳","India","media/men-47.jpg",0],["Ingrid Roberts","🇨🇦","Kanada","media/women-48.jpg",1],["Hugo White","🇩🇪","Ujerumani","media/men-48.jpg",1],["Olivia Thomas","🇲🇽","Mexiko","media/women-49.jpg",1],["Felix Fernandez","🇮🇪","Ayalandi","",1],["Aisha Thomas","🇧🇪","Ubelgiji","",1],["Tariq Anderson","🇺🇸","Marekani","",0],["Amelia Petrov","🇦🇺","Australia","",1],["Andre Ivanova","🇩🇪","Ujerumani","",1],["Priya Clark","🇮🇹","Italia","",1],["Noah King","🇮🇹","Italia","",1],["Freya Schmidt","🇪🇸","Hispania","",1],["Nikolai Adams","🇳🇱","Uholanzi","",0],["Nadia Carter","🇩🇪","Ujerumani","",1],["Mason Ivanova","🇯🇵","Japani","",1],["Ingrid Singh","🇨🇭","Uswisi","",1],["Max Schmidt","🇩🇪","Ujerumani","",1],["Nadia Thomas","🇨🇭","Uswisi","",1],["Victor Williams","🇲🇽","Mexiko","",0],["Elena Lopez","🇺🇸","Marekani","",1],["Felix Harris","🇩🇪","Ujerumani","",1],["Lily Moreau","🇬🇧","Uingereza","",1],["Hiro Kumar","🇨🇭","Uswisi","",1],["Rosa Moreau","🇮🇪","Ayalandi","",1],["Jack Moreau","🇬🇧","Uingereza","",0],["Lucy Clark","🇳🇱","Uholanzi","",1],["Ethan Boateng","🇦🇺","Australia","",1],["Paula Evans","🇧🇪","Ubelgiji","",1],["Noah Okafor","🇨🇦","Kanada","",1],["Anika Adams","🇨🇭","Uswisi","",1],["Thomas Schmidt","🇮🇹","Italia","",0],["Sophie Evans","🇨🇭","Uswisi","",1],["Kofi Novak","🇨🇭","Uswisi","",1],["Lucy Ali","🇨🇭","Uswisi","",1],["Omar Moreau","🇮🇹","Italia","",1],["Anika Anderson","🇧🇷","Brazili","",1],["Leo Roberts","🇲🇽","Mexiko","",0],["Camila Davis","🇪🇸","Hispania","",1],["Ben Davis","🇮🇹","Italia","",1],["Ella Taylor","🇩🇪","Ujerumani","",1],["Erik Thomas","🇳🇱","Uholanzi","",1],["Zoe Turner","🇪🇸","Hispania","",1],["Jack Roberts","🇮🇪","Ayalandi","",0],["Clara Singh","🇪🇸","Hispania","",1],["Hugo Haddad","🇧🇷","Brazili","",1],["Paula Roberts","🇳🇴","Norwei","",1],["Max Clark","🇯🇵","Japani","",1],["Camila Wilson","🇯🇵","Japani","",1],["Noah Nelson","🇧🇪","Ubelgiji","",0],["Ingrid Evans","🇺🇸","Marekani","",1],["Lars Nelson","🇨🇭","Uswisi","",1],["Ruby Scott","🇨🇭","Uswisi","",1],["Daniel Taylor","🇪🇸","Hispania","",1],["Grace Wilson","🇳🇱","Uholanzi","",1],["Karim Jones","🇫🇷","Ufaransa","",0],["Sophie Okafor","🇩🇪","Ujerumani","",1],["Ben Kumar","🇳🇱","Uholanzi","",1],["Mei Thomas","🇧🇪","Ubelgiji","",1],["Victor Romano","🇮🇪","Ayalandi","",1],["Sophie Miller","🇫🇷","Ufaransa","",1],["Karim Williams","🇨🇦","Kanada","",0],["Alice Wilson","🇪🇸","Hispania","",1],["Daniel King","🇦🇺","Australia","",1],["Ingrid Johnson","🇳🇴","Norwei","",1],["Tariq Carter","🇳🇱","Uholanzi","",1],["Ruby Anderson","🇬🇧","Uingereza","",1],["Andre Haddad","🇪🇸","Hispania","",0],["Lily White","🇳🇱","Uholanzi","",1],["Mason Harris","🇮🇹","Italia","",1],["Ella Nakamura","🇸🇪","Uswidi","",1],["Andre Okafor","🇮🇹","Italia","",1],["Freya Evans","🇨🇭","Uswisi","",1],["Mateo Wright","🇯🇵","Japani","",0],["Olivia King","🇬🇧","Uingereza","",1],["James Williams","🇨🇭","Uswisi","",1],["Amara Clark","🇨🇭","Uswisi","",1],["David Young","🇲🇽","Mexiko","",1],["Grace Singh","🇧🇷","Brazili","",1],["Paul Dubois","🇮🇳","India","",0],["Paula Green","🇮🇹","Italia","",1],["Marco Nelson","🇮🇹","Italia","",1],["Zoe Roberts","🇯🇵","Japani","",1],["Mason Anderson","🇺🇸","Marekani","",1],["Charlotte Nakamura","🇳🇱","Uholanzi","",1],["Ben White","🇬🇧","Uingereza","",0],["Leila Schmidt","🇸🇪","Uswidi","",1],["Thomas Young","🇸🇪","Uswidi","",1],["Isabella Turner","🇫🇷","Ufaransa","",1],["Hugo Wright","🇲🇽","Mexiko","",1],["Amelia King","🇯🇵","Japani","",1],["Arjun Moreau","🇳🇴","Norwei","",0],["Lucy Jones","🇸🇪","Uswidi","",1],["Pablo Hill","🇫🇷","Ufaransa","",1],["Amelia Nelson","🇮🇳","India","",1],["Henry Novak","🇳🇱","Uholanzi","",1],["Paula Sato","🇮🇹","Italia","",1],["Luca Schmidt","🇺🇸","Marekani","",0],["Ava King","🇨🇦","Kanada","",1],["Felix Roberts","🇬🇧","Uingereza","",1],["Mei Williams","🇸🇪","Uswidi","",1],["Kenji Nakamura","🇪🇸","Hispania","",1],["Ava Costa","🇨🇭","Uswisi","",1],["Felix Singh","🇮🇳","India","",0],["Camila Petrov","🇮🇪","Ayalandi","",1],["Felix Scott","🇩🇪","Ujerumani","",1],["Isabella Haddad","🇨🇭","Uswisi","",1],["Ben Petrov","🇨🇭","Uswisi","",1],["Zoe Fischer","🇨🇭","Uswisi","",1],["Ivan Williams","🇪🇸","Hispania","",0],["Ava Williams","🇬🇧","Uingereza","",1],["Oscar Nakamura","🇯🇵","Japani","",1],["Grace Mitchell","🇲🇽","Mexiko","",1],["Tariq Miller","🇺🇸","Marekani","",1],["Nadia Kumar","🇪🇸","Hispania","",1],["Paul King","🇺🇸","Marekani","",0],["Ingrid Davis","🇨🇭","Uswisi","",1],["Kofi Wilson","🇨🇭","Uswisi","",1],["Charlotte Ivanova","🇮🇪","Ayalandi","",1],["Omar Davis","🇳🇱","Uholanzi","",1],["Lucy Petrov","🇮🇹","Italia","",1],["Marco Ivanova","🇲🇽","Mexiko","",0],["Marta Mitchell","🇨🇦","Kanada","",1],["David Kumar","🇸🇪","Uswidi","",1],["Isabella Fernandez","🇮🇹","Italia","",1],["Daniel Lopez","🇩🇪","Ujerumani","",1],["Valentina King","🇸🇪","Uswidi","",1],["Oscar Johnson","🇮🇪","Ayalandi","",0],["Mia Larsen","🇳🇱","Uholanzi","",1],["Jack Ali","🇮🇹","Italia","",1],["Marta Scott","🇨🇭","Uswisi","",1],["Ali Turner","🇲🇽","Mexiko","",1],["Laura Green","🇨🇦","Kanada","",1],["David Williams","🇸🇪","Uswidi","",0],["Sophie Mitchell","🇮🇹","Italia","",1],["Pablo Davis","🇨🇦","Kanada","",1],["Nora Ivanova","🇨🇭","Uswisi","",1],["Omar Campbell","🇩🇪","Ujerumani","",1],["Emily Nakamura","🇨🇭","Uswisi","",1],["Karim Taylor","🇯🇵","Japani","",0]];
+const PEOPLE_LIMIT=12;
+let peopleCursor=PEOPLE_LIMIT, peopleExitSlot=0;
+const visiblePeople=Array.from({length:Math.min(PEOPLE_LIMIT,P.length)},(_,i)=>i);
+const statusFor=i=>P[i]?.[4]===2?'Yupo kwenye mafunzo':P[i]?.[4]===1?'Online':'Offline';
+function replacePerson(index){
+  const slot=visiblePeople.indexOf(index);if(slot<0||P.length<=PEOPLE_LIMIT)return;
+  let next=peopleCursor%P.length;
+  let attempts=0;
+  while((visiblePeople.includes(next)||statusFor(next)!==statusFor(index))&&attempts++<P.length){next=(next+1)%P.length}
+  if(visiblePeople.includes(next))return;
+  visiblePeople[slot]=next;peopleCursor=(next+1)%P.length;renderPeople();
+}
+function rotatePeople(){
+  for(let step=0;step<visiblePeople.length;step++){
+    const slot=(peopleExitSlot+step)%visiblePeople.length,index=visiblePeople[slot];
+    if(index===cur&&$('chatOv').classList.contains('on'))continue;
+    peopleExitSlot=(slot+1)%visiblePeople.length;replacePerson(index);break;
+  }
+}
+function renderPeople(){
+  $('people').innerHTML=visiblePeople.map(idx=>{const p=P[idx],status=statusFor(idx),state=status==='Offline'?'off':status==='Yupo kwenye mafunzo'?'training':'';return `<button class="person ${state}" onclick="openChat(${idx})" aria-disabled="${status!=='Online'}"><div class="av ${state}" style="background:${colors[idx%8]}">${p[3]?`<img class="profile-photo" src="${p[3]}" alt="${p[0]}" loading="lazy">`:p[0].split(' ').map(n=>n[0]).slice(0,2).join('')}</div><div class="person-info"><b>${p[0]} ${p[1]}</b><small>${p[2]} • ${status}</small></div><span class="chat">${status==='Online'?'chat now':status}</span></button>`}).join('');
+  $('onl').textContent=P.filter((_,i)=>statusFor(i)==='Online').length;
+}
+function rotateAllPeople(){
+  const keep=$("chatOv").classList.contains("on")?cur:-1;const used=new Set(visiblePeople);
+  for(let s=0;s<visiblePeople.length;s++){if(visiblePeople[s]===keep)continue;
+    let n=peopleCursor%P.length,g=0;while((used.has(n)||n===keep)&&g++<P.length)n=(n+1)%P.length;
+    visiblePeople[s]=n;used.add(n);peopleCursor=(n+1)%P.length}
+  renderPeople();
+}
+function refreshPresence(updateHomeSelection=false){
+  const pinned=$('chatOv').classList.contains('on')?cur:null;
+  ChatSitePresence.apply(P,Date.now(),pinned);
+  // Only the 40-second home rotation may replace visible profiles.
+  if(updateHomeSelection){
+  const protectedStatuses=new Set();
+  for(const online of [0,1,2]){
+    if(visiblePeople.some(index=>P[index][4]===online)){protectedStatuses.add(online);continue;}
+    const replacement=P.findIndex((profile,index)=>profile[4]===online&&!visiblePeople.includes(index));
+    const slot=visiblePeople.findLastIndex(index=>index!==pinned&&(!protectedStatuses.has(P[index][4])||visiblePeople.filter(i=>P[i][4]===P[index][4]).length>1));
+    if(replacement>=0&&slot>=0){visiblePeople[slot]=replacement;protectedStatuses.add(online);}
+  }
+  }
+  renderPeople();
+}
+refreshPresence(true);setInterval(()=>refreshPresence(),ChatSitePresence.intervalMs);
+setInterval(()=>{rotateAllPeople();refreshPresence(true)},40000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshPresence()});
+window.addEventListener('pageshow',()=>refreshPresence());
+
+// malipo
+let paymentWindowKey = '', paymentRotationTimer;
+function renderPaymentExamples(){
+  clearTimeout(paymentRotationTimer);
+  const group = ChatSitePaymentExamples.getWindow(Date.now()), key = group.day + ':' + group.slot;
+  if(key !== paymentWindowKey){
+    paymentWindowKey = key;
+    const rows = group.entries.map(p=>`<div class="pay"><div><b>${p.name}</b><small>${p.town} • ${p.network}</small></div><span class="a">+${fmt(p.amount)}</span></div>`).join('');
+    $('pays').innerHTML='<div>'+rows+'</div><div aria-hidden="true">'+rows+'</div>';
+  }
+  paymentRotationTimer=setTimeout(renderPaymentExamples,Math.max(250,group.nextChange-Date.now()));
+}
+renderPaymentExamples();
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)renderPaymentExamples()});
+window.addEventListener('pageshow',renderPaymentExamples);
+
+// maoni
+const baseRevs=[['Rahma Juma','Nimefurahia sana huduma hii. Kila kitu kiko wazi na nimelipwa kwa wakati.'],['Zawadi Peter','Ni rahisi kuanza mazungumzo bila usumbufu. Wageni ni wakarimu sana.'],['Daudi Mrisho','Nimepata kipato cha ziada nikiwa nyumbani. Asanteni Chatsite!']];
+function renderRevs(){$('revs').innerHTML=baseRevs.map(r=>`<div class="rev"><span class="s">★★★★★</span><b>${r[0].replace(/</g,'&lt;')}</b><p>${r[1].replace(/</g,'&lt;')}</p></div>`).join('')}renderRevs();
+function addRev(){const n=$('rn').value.trim(),t=$('rt').value.trim();if(!n||!t)return toast('Jaza jina na maoni');const r=store.get('pending_revs',[]);r.unshift([n,t]);store.set('pending_revs',r);$('rn').value=$('rt').value='';toast('Maombi yako yametumwa')}
+
+// chat
+const OPTS=[[1,4000,4000],[10,7000,7000],[20,10000,10000],[35,15000,15000]];
+let cur=null,sel=0,timer=null,earned=0,pendingPayment=null,roomActive=false,replyTimer=null,replyWaiting=false,student=null,studentTurn=0,typingBubble=null,studentDialogue=null;
+function openOv(id){$(id).classList.add('on');document.body.style.overflow='hidden'}
+function closeOv(id){$(id).classList.remove('on');document.body.style.overflow='';if(id=='chatOv'){clearInterval(timer);clearTimeout(replyTimer);if(typingBubble)typingBubble.remove();typingBubble=null;replyWaiting=false;roomActive=false;if(cur!==null){cur=null}}}
+function tix(){return store.get('tix',4)}
+function showTicketLimit(){const notice=$('paymentNotice');notice.textContent='Umefika kikomo cha tiketi 4. Ili kuendelea na kufungua mafunzo zaidi, jisajili. Uwe na account Pro uchat unlimited.';notice.hidden=false;notice.replaceChildren(document.createTextNode('Umefika kikomo cha tiketi 4. Ili kuendelea na kufungua mafunzo zaidi, jisajili. Uwe na account Pro uchat unlimited.'));const register=document.createElement('button');register.type='button';register.className='withdraw-register';register.textContent='JISAJILI SASA';register.onclick=signup;notice.appendChild(register);const dismiss=document.createElement('button');dismiss.type='button';dismiss.className='withdraw-back';dismiss.textContent='Funga';dismiss.onclick=()=>notice.hidden=true;notice.appendChild(dismiss)}
+function openChat(i){if(tix()<=0){showTicketLimit();return}if(paymentProcessing)return toast('Subiri salio lisasishwe');const p=P[i];if(statusFor(i)!=='Online')return toast(p[0]+' — '+statusFor(i));cur=i;student=p.slice();sel=0;studentTurn=0;studentDialogue=ChatsiteStudentDialogue.create(p[0],studentStyles[p[0]]);
+  $('cAv').replaceChildren();if(p[3]){const photo=document.createElement('img');photo.className='profile-photo';photo.src=p[3];photo.alt='';$('cAv').appendChild(photo)}else{$('cAv').textContent=p[0][0]};$('cAv').style.background=colors[i%8];$('cName').textContent=p[0]+' '+p[1];
+  $('pickSub').textContent=`Fundisha ${p[0]} Kiswahili na upate malipo kulingana na muda.`;
+  $('startBtn').textContent='Anza chat na '+p[0].split(' ')[0];
+  $('tixTxt').textContent=`Umebakiwa na tiketi ${tix()} kati ya 4 za bure.`;
+  renderOpts();$('pick').style.display='block';$('room').style.display='none';openOv('chatOv')}
+function renderOpts(){$('opts').innerHTML=OPTS.map((o,i)=>`<button class="opt ${i==sel?'sel':''}" onclick="sel=${i};renderOpts()"><span style="color:var(--g)">◷</span><div><b>${o[0]} dakika</b><small>Malipo ya mwanafunzi: ${fmt(o[1])}</small></div><span class="e">+${fmt(o[2])}</span></button>`).join('')}
+$('startBtn').onclick=()=>{const t=tix();if(t<=0)return showTicketLimit();
+  const p=P[cur],o=OPTS[sel];
+  $('pick').style.display='none';$('room').style.display='flex';earned=0;pendingPayment=null;roomActive=true;
+  $('roomForm').style.display='flex';$('confirmPayment').style.display='none';$('lessonNotice').hidden=true;studentDialogue=ChatsiteStudentDialogue.create(p[0],studentStyles[p[0]]);
+  $('rInfo').textContent=`${o[0]} dakika • unapata ${fmt(o[2])}`;$('rEarn').textContent='Umechuma TZS 0';
+  $('rMsgs').innerHTML='';clearTimeout(replyTimer);typingBubble=null;replyWaiting=false;studentTurn=0;
+  let secs=o[0]*60,total=secs;const endsAt=Date.now()+total*1000;clearInterval(timer);
+  const updateRoom=()=>{secs=Math.max(0,Math.ceil((endsAt-Date.now())/1000));earned=studentDialogue.review().eligible?Math.round(o[2]*(total-secs)/total):0;$('rInfo').textContent='Muda uliobaki '+Math.floor(secs/60)+':'+String(secs%60).padStart(2,'0');$('rEarn').textContent='Inasubiri ukaguzi: '+fmt(earned);
+    if(secs<=0){clearInterval(timer);clearTimeout(replyTimer);if(typingBubble)typingBubble.remove();typingBubble=null;replyWaiting=false;roomActive=false;$('roomForm').style.display='none';const result=studentDialogue.review();if(!result.eligible){showLessonFailure(result);return}pendingPayment={amount:o[2]};addMsg('rMsgs','them','Muda wa chat umeisha. Mafunzo ya mfano yamekidhi mada niliyoomba.');$('confirmPayment').style.display='block'}};updateRoom();timer=setInterval(updateRoom,250);$('rIn').focus();
+  };
+let paymentProcessing=false,paymentTimer=null;
+function showLessonFailure(result){pendingPayment=null;earned=0;$('rEarn').textContent='Umechuma TZS 0';$('confirmPayment').style.display='none';$('lessonNoticeMessage').textContent=result.message;$('lessonNotice').hidden=false;$('lessonNotice').querySelector('button').focus()}
+function backFromLessonReview(){clearInterval(timer);clearTimeout(replyTimer);pendingPayment=null;roomActive=false;replyWaiting=false;$('lessonNotice').hidden=true;closeOv('chatOv')}
+function confirmRoomPayment(){
+ if(!pendingPayment||paymentProcessing)return;
+ const result=studentDialogue.review();if(!result.eligible){showLessonFailure(result);return}
+ paymentProcessing=true;const amount=pendingPayment.amount;pendingPayment=null;
+ const button=$('confirmPayment');button.disabled=true;button.textContent='Inasubiri uthibitisho…';
+ const notice=$('paymentNotice');notice.hidden=true;
+ const confirmsAt=Date.now()+20000;
+ function finish(){
+   clearInterval(paymentTimer);if(!studentDialogue.review().eligible){paymentProcessing=false;button.disabled=false;button.textContent='Thibitisha malipo yako';showLessonFailure(studentDialogue.review());return}bal+=amount;store.set('bal',bal);store.set('tix',Math.max(0,tix()-1));showBal();
+  paymentProcessing=false;button.disabled=false;button.textContent='Thibitisha malipo yako';
+  closeOv('chatOv');notice.hidden=false;notice.textContent='Salio la ndani: '+fmt(amount)+'. Si fedha za kutoa.';
+  setTimeout(()=>{if(!paymentProcessing)notice.hidden=true},6000);
+ }
+ function update(){const seconds=Math.max(0,Math.ceil((confirmsAt-Date.now())/1000));if(seconds===0)finish()}
+ update();paymentTimer=setInterval(update,250);
+}
+const studentStyles={
+'Maria Garcia': ['Hola! 😊 Naomba unifunze maneno “habari” na “rafiki” kwa Kiswahili.', 'Sawa nitajifunza 😊 Gracias!', 'Naomba tuendelee na neno “familia”.'],
+'Ahmed Hassan': ['Salam, mwalimu. Naomba unifunze maana ya “asubuhi” na “jioni”.', 'Sawa nitajifunza. Nashukuru kwa maelezo yako.', 'Tafadhali nifundishe jinsi ya kusalimia kwa heshima.'],
+'Ingrid Berg': ['Habari! Ningependa kujifunza kuandika “karibu” na “asante”.', 'Sawa nitajifunza. Nitaandika kwenye daftari langu.', 'Naomba unifunze sentensi fupi yenye “karibu”.'],
+'Tom Baker': ['G’day! Naomba unifunze maneno “maji” na “chakula” 😄', 'Sawa nitajifunza, mate! 😄', 'Ninawezaje kuomba maji kwa Kiswahili?'],
+'Oliver Smith': ['Hello, mwalimu. Could you teach me “habari” na “nzuri”?', 'Sawa nitajifunza. Thank you very much!', 'Naomba unifunze kusema “good evening”.'],
+'Sarah Brown': ['Hi! 👋 Naomba unifunze kuhesabu “moja”, “mbili” na “tatu”.', 'Sawa nitajifunza! Nitaendelea kufanya mazoezi 👋', 'What comes after “tatu” kwa Kiswahili?'],
+'Yuki Tanaka': ['Konnichiwa. Tafadhali unifunze maneno “amani” na “heshima”.', 'Sawa nitajifunza. Asante kwa uvumilivu wako 🙏', 'Naomba mfano wa sentensi yenye “amani”.'],
+'Lucas Müller': ['Hallo! Naomba unifunze “njia” na “kushoto”. Napenda mifano.', 'Sawa nitajifunza. Nimeweka maneno hayo kwenye orodha yangu.', 'Ninawezaje kuuliza njia kwa Kiswahili?'],
+'Chloé Martin': ['Bonjour 🌸 Naomba unifunze maana ya “furaha” na “upendo”.', 'Sawa nitajifunza 🌸 Merci, mwalimu!', 'Naomba unifunze sentensi yenye “furaha”.'],
+'Raj Patel': ['Namaste! Naomba unifunze “bei” na “duka”, tafadhali.', 'Sawa nitajifunza. Nitayarudia maneno hayo mara tatu.', 'Ninawezaje kuuliza bei kwa Kiswahili?'],
+'Ana Silva': ['Olá! 🎶 Naomba unifunze maneno “wimbo” na “ngoma”.', 'Sawa nitajifunza 🎶 Obrigada!', 'Naomba mfano mfupi wenye neno “wimbo”.'],
+'Liam Chen': ['Hi there! Naomba unifunze tofauti ya “mimi” na “wewe”.', 'Sawa nitajifunza. Nitaanza na sentensi moja moja.', 'Naomba unifunze sentensi yenye “mimi”.'],
+'Sofia Rossi': ['Ciao! 😊 Naomba unifunze “karibu” na “tafadhali”.', 'Sawa nitajifunza 😊 Grazie sana!', 'Ninawezaje kusema “welcome, my friend”?'],
+'Emma Jansen': ['Hoi! Naomba unifunze “dada” na “kaka”, mwalimu.', 'Sawa nitajifunza. Nitaanza na maneno hayo mawili.', 'Naomba unifunze maana ya “ndugu”.'],
+'Kwame Mensah': ['Hello, rafiki! Naomba unifunze kutamka “shukrani” na “karibu”.', 'Sawa nitajifunza, rafiki. Nitajizoesha kuyatamka!', 'Naomba unifunze salamu nyingine ya Kiswahili.'],
+'Hana Kim': ['Annyeong! 🌻 Naomba unifunze “leo” na “kesho”.', 'Sawa nitajifunza 🌻 Asante kwa somo!', 'Naomba mfano wa sentensi yenye “kesho”.']
+};
+function studentResponse(message){return studentDialogue.respond(message)}
+function sendRoom(e){
+  e.preventDefault();const v=$('rIn').value.trim();if(!v||!roomActive||replyWaiting)return;
+  studentDialogue.submit(v);addMsg('rMsgs','me',v);$('rIn').value='';replyWaiting=true;$('rIn').focus();
+  replyTimer=setTimeout(()=>{
+    if(!roomActive){replyWaiting=false;return}
+    typingBubble=addMsg('rMsgs','them','Anaandika…');typingBubble.setAttribute('role','status');
+    replyTimer=setTimeout(()=>{if(typingBubble)typingBubble.remove();typingBubble=null;replyWaiting=false;if(roomActive)addMsg('rMsgs','them',studentResponse(v));$('rIn').focus()},7000);
+  },3000);
+}
+function addMsg(box,who,t){const d=document.createElement('div');d.className='msg '+who;d.textContent=t;$(box).appendChild(d);d.scrollIntoView({behavior:'smooth',block:'end'});return d}
+
+// msaada
+const TOP={'Chat na watu':'Bonyeza mtu yeyote aliye online, chagua muda wa chat, kisha anza mazungumzo. Kuchat na mtu mmoja haitumii tiketi nyingine. Historia yako huhifadhiwa kwenye kivinjari chako.',
+'Chatsite ni nini?':'Chatsite Online ni jukwaa la kufunza KISWAHILI 📚. Watu kutoka nchi mbalimbali wanaotaka kujifunza Kiswahili huchat nawe, nawe unawafundisha maneno, salamu na mazungumzo — unapata kipato 💰 — ukifunza watu wengi zaidi, unapata zaidi.\n\nJinsi inavyofanya kazi:\n1. Fungua account (kiingilio TZS 14,500 mara moja tu).\n2. Anza kuchat na wanafunzi wa Kiswahili.\n3. Malipo yako yanaingia kwenye account yako.\n4. Toa pesa muda wowote, kuanzia TZS 5,000.\n\nUna swali lingine? Niulize, nipo hapa kukusaidia ❤️',
+'Kutoa pesa':'Unaweza kutoa pesa muda wowote kuanzia TZS 5,000 kupitia M-Pesa, Airtel Money, Mixx au Halopesa. Malipo hufika ndani ya dakika chache.',
+'Tiketi za bure':'Kila mtumiaji mpya anapata tiketi 4 za bure za kujaribu chat. Zikiisha, jisajili uwe na account Pro uchat unlimited.',
+'Kufungua account':'Bonyeza "FUNGUA ACCOUNT HAPA" kwenye ukurasa wa mwanzo. Kiingilio ni TZS 14,500 mara moja tu.'};
+let helpInit=false;
+function showTopics(){const d=document.createElement('div');d.className='chips';d.innerHTML=Object.keys(TOP).map(k=>`<button class="chip">${k}</button>`).join('');d.querySelectorAll('.chip').forEach(b=>b.onclick=()=>ask(b.textContent));$('hMsgs').appendChild(d);d.scrollIntoView({behavior:'smooth',block:'end'})}
+function openHelp(){openOv('helpOv');$('helpChoice').style.display='flex';$('helpChat').style.display='none'}
+function startHelpChat(){$('helpChoice').style.display='none';$('helpChat').style.display='flex';if(!helpInit){helpInit=true;addMsg('hMsgs','them','Karibu Msaada wa haraka! Andika ujumbe wako hapa chini au chagua mada:');showTopics()}}
+function ask(q){addMsg('hMsgs','me',q);setTimeout(()=>{addMsg('hMsgs','them',answer(q))},600)}
+function answer(q){const l=q.toLowerCase();if(TOP[q])return TOP[q];
+  if(ChatsiteSupportLanguage.courtesyOnly(q))return 'karibu tena';
+  if(/pesa|toa|withdraw|malipo/.test(l))return TOP['Kutoa pesa'];if(/tiketi/.test(l))return TOP['Tiketi za bure'];
+  if(/account|jisajili|fungua/.test(l))return TOP['Kufungua account'];if(/chat|mtu|watu/.test(l))return TOP['Chat na watu'];
+  return TOP['Chatsite ni nini?']}
+function sendHelp(e){e.preventDefault();const v=$('hIn').value.trim();if(!v)return;$('hIn').value='';ask(v)}
+document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeOv(o.id)}));
+
+</script>
+</body>
+</html>
